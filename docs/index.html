@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>아침 시황판</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Gowun+Batang:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF0F3; --panel:#FFFFFF; --ink:#18202C; --muted:#5E6878; --line:#D5DBE3;
+  --up:#D0342C; --down:#2459C7; --flat:#8A93A2; --dawn:#E8A33A; --dawn-soft:#FBEBD0;
+  --bar-bg:#E7EBF0;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151E; --panel:#171E2A; --ink:#E6EAF0; --muted:#95A0B2; --line:#28313F;
+    --up:#FF6B61; --down:#6F9BFF; --flat:#7C8595; --dawn:#F0B55A; --dawn-soft:#2E2618; --bar-bg:#222B38;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151E; --panel:#171E2A; --ink:#E6EAF0; --muted:#95A0B2; --line:#28313F;
+  --up:#FF6B61; --down:#6F9BFF; --flat:#7C8595; --dawn:#F0B55A; --dawn-soft:#2E2618; --bar-bg:#222B38;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  font-size:15px;line-height:1.55;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 18px 64px}
+a{color:inherit}
+button,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--dawn);outline-offset:2px}
+
+/* 상단 */
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;padding-bottom:14px;border-bottom:2px solid var(--ink)}
+.brand{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.brand span{color:var(--muted);font-weight:500;margin-left:6px}
+.controls{display:flex;gap:8px;align-items:center}
+.controls select,.controls button{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:6px 10px;cursor:pointer}
+.legend{font-size:12px;color:var(--muted)}
+.legend b.u{color:var(--up)} .legend b.d{color:var(--down)}
+
+/* 헤드라인 */
+.hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:28px;padding:28px 0 26px}
+.date{display:inline-block;background:var(--dawn-soft);color:var(--ink);border-left:4px solid var(--dawn);padding:3px 10px;font-size:13px;font-weight:600;margin-bottom:14px}
+.headline{font-family:"Gowun Batang","Nanum Myeongjo",serif;font-size:clamp(26px,3.6vw,40px);line-height:1.28;letter-spacing:-.02em;margin:0 0 14px;word-break:keep-all}
+.basis{font-size:13px;color:var(--muted)}
+.summary{margin:0;padding:0;list-style:none;border-left:1px solid var(--line);padding-left:22px}
+.summary li{padding:9px 0;border-bottom:1px dashed var(--line);word-break:keep-all}
+.summary li:last-child{border-bottom:0}
+
+/* 핵심 6 */
+.keys{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:34px}
+.key{padding:14px 16px;border-right:1px solid var(--line)}
+.key:last-child{border-right:0}
+.key .n{font-size:12.5px;color:var(--muted)}
+.key .v{font-size:22px;font-weight:600;letter-spacing:-.02em;margin:2px 0}
+.key .c{font-size:13px;font-weight:500}
+
+/* 섹션 */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.sec{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px 10px}
+.sec.wide{grid-column:1/-1}
+.sec h2{font-size:16px;margin:0 0 2px;font-weight:700}
+.sec .hint{font-size:12px;color:var(--muted);margin:0 0 10px}
+.rows{display:grid;grid-template-columns:minmax(0,1.3fr) auto auto minmax(70px,1fr);column-gap:14px;align-items:center}
+.rows .h{font-size:11.5px;color:var(--muted);padding-bottom:6px;border-bottom:1px solid var(--line)}
+.rows .h.r{text-align:right}
+.cell{padding:8px 0;border-bottom:1px solid var(--line);min-height:40px;display:flex;flex-direction:column;justify-content:center}
+.cell.r{text-align:right;align-items:flex-end}
+.nm{font-weight:500}
+.sub{font-size:11.5px;color:var(--muted)}
+.val{font-weight:600}
+.stale{font-size:10.5px;color:var(--muted);font-weight:500;margin-left:4px}
+.approx{font-size:10.5px;color:var(--dawn);font-weight:600;margin-left:4px}
+.chg{font-size:13.5px;font-weight:500;white-space:nowrap}
+.u{color:var(--up)} .d{color:var(--down)} .f{color:var(--flat)}
+.empty-v{color:var(--flat);font-weight:400}
+.bar{position:relative;height:10px;background:var(--bar-bg);border-radius:2px}
+.bar::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--muted);opacity:.5}
+.bar i{position:absolute;top:0;bottom:0;border-radius:2px}
+.note{grid-column:1/-1;font-size:12px;color:var(--muted);padding:0 0 8px;margin-top:-4px;border-bottom:1px solid var(--line)}
+.rows > .cell:nth-last-child(-n+4){border-bottom:0}
+
+/* 이벤트 */
+.ev{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.ev h3{font-size:13px;color:var(--muted);font-weight:600;margin:4px 0 8px}
+.ev ul{list-style:none;margin:0;padding:0}
+.ev li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.ev .dt{font-size:12.5px;font-weight:600;color:var(--dawn)}
+.ev .t{font-weight:600}
+.ev .x{font-size:13px;color:var(--muted);word-break:keep-all}
+
+.foot{margin-top:28px;font-size:12px;color:var(--muted)}
+.foot a{color:var(--muted)}
+.state{padding:60px 0;text-align:center;color:var(--muted)}
+.state strong{display:block;color:var(--ink);font-size:18px;margin-bottom:6px}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .summary{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+  .keys{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .key:nth-child(3){border-right:0}
+  .key:nth-child(-n+3){border-bottom:1px solid var(--line)}
+  .grid,.ev{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .keys{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .key{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)}
+  .key:nth-child(2n){border-right:0!important}
+  .rows{grid-template-columns:minmax(0,1.2fr) auto auto}
+  .rows .bcol{display:none}
+}
+@media (prefers-reduced-motion:no-preference){
+  .bar i{transition:width .5s ease-out}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">아침 시황판<span>매크로 · 금리 · 외환 · 원자재</span></div>
+    <div class="controls">
+      <span class="legend"><b class="u">▲ 상승</b> / <b class="d">▼ 하락</b></span>
+      <select id="picker" aria-label="브리프 날짜 선택" hidden></select>
+    </div>
+  </header>
+  <main id="app"><div class="state"><strong>브리프를 불러오는 중입니다</strong>잠시만 기다려 주세요.</div></main>
+</div>
+
+<script>
+(function(){
+  const app = document.getElementById('app');
+  const picker = document.getElementById('picker');
+  const cache = {};
+
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const dirClass = b => (b == null || b === 0) ? 'f' : (b > 0 ? 'u' : 'd');
+  const arrow = b => (b == null || b === 0) ? '' : (b > 0 ? '▲ ' : '▼ ');
+  const md = d => d ? `${+d.slice(5,7)}/${+d.slice(8,10)}` : '';
+
+  function keyTile(k){
+    const has = k.value != null && k.value !== '';
+    return `<div class="key"><div class="n">${esc(k.name)}</div>
+      <div class="v">${has ? esc(k.value) : '<span class="empty-v">—</span>'}</div>
+      <div class="c ${dirClass(k.bar)}">${k.change ? arrow(k.bar) + esc(k.change) : '&nbsp;'}</div></div>`;
+  }
+
+  function section(s){
+    const items = s.items || [];
+    const max = Math.max(1, ...items.map(i => Math.abs(i.bar || 0)));
+    const newest = items.map(i => i.date).filter(Boolean).sort().pop();
+    const isMacro = s.title.indexOf('매크로') >= 0;
+    const rows = items.map(i => {
+      const has = i.value != null && i.value !== '';
+      const w = i.bar == null ? 0 : Math.min(50, Math.abs(i.bar) / max * 50);
+      const pos = i.bar > 0 ? `left:50%;width:${w}%;background:var(--up)` : `right:50%;width:${w}%;background:var(--down)`;
+      const stale = !isMacro && has && i.date && newest && i.date < newest ? `<span class="stale">${md(i.date)}</span>` : '';
+      return `
+        <div class="cell"><span class="nm">${esc(i.name)}</span>${i.sub ? `<span class="sub">${esc(i.sub)}</span>` : ''}</div>
+        <div class="cell r"><span class="val">${has ? esc(i.value) : '<span class="empty-v">—</span>'}${stale}</span></div>
+        <div class="cell r"><span class="chg ${dirClass(i.bar)}">${i.change ? arrow(i.bar) + esc(i.change) : '<span class="empty-v">—</span>'}</span></div>
+        <div class="cell bcol"><div class="bar" role="img" aria-label="${esc(i.name)} 변동 ${esc(i.change || '없음')}"><i style="${i.bar ? pos : ''}"></i></div></div>
+        ${i.note ? `<div class="note">${esc(i.note)}</div>` : ''}`;
+    }).join('');
+    return `<section class="sec${s.wide ? ' wide' : ''}"><h2>${esc(s.title)}</h2>
+      ${s.hint ? `<p class="hint">${esc(s.hint)}</p>` : ''}
+      <div class="rows"><div class="h">지표</div><div class="h r">${isMacro ? '최근치' : '종가'}</div><div class="h r">${isMacro ? '직전치' : '전일 대비'}</div><div class="h bcol"></div>${rows}</div>
+    </section>`;
+  }
+
+  function events(ev){
+    if (!ev) return '';
+    const list = arr => (arr || []).map(e => `<li><span class="dt">${esc(e.date)}</span><div><div class="t">${esc(e.title)}</div>${e.detail ? `<div class="x">${esc(e.detail)}</div>` : ''}</div></li>`).join('');
+    const up = list(ev.upcoming), past = list(ev.past);
+    if (!up && !past) return '';
+    return `<section class="sec wide"><h2>매크로 일정</h2><p class="hint">앞으로 열흘 안의 미국 주요 발표 (FRED 기준)</p>
+      <div class="ev">${past ? `<div><h3>지난 주요 발표</h3><ul>${past}</ul></div>` : ''}<div><h3>다가오는 발표</h3><ul>${up || '<li><span class="dt">—</span><div class="x">예정된 발표가 없습니다.</div></li>'}</ul></div></div></section>`;
+  }
+
+  function render(d){
+    app.innerHTML = `
+      <section class="hero"><div>
+          <span class="date">${esc(d.label || d.date)}</span>
+          <h1 class="headline">${esc(d.headline)}</h1>
+          <div class="basis">${esc(d.basis || '')}</div></div>
+        <ul class="summary">${(d.summary || []).map(s => `<li>${esc(s)}</li>`).join('') || '<li>요약이 없는 날입니다. 숫자만 확인해 주세요.</li>'}</ul>
+      </section>
+      <div class="keys">${(d.keys || []).map(keyTile).join('')}</div>
+      <div class="grid">${(d.sections || []).map(section).join('')}${events(d.events)}</div>
+      <p class="foot">“—”는 해당 소스에서 값을 받지 못한 지표입니다. 값 옆 작은 날짜는 다른 지표보다 기준일이 이른 경우(휴장 등)입니다.
+        ${d.stats ? `<br>이번 수집: ${d.stats.filled}/${d.stats.total}개 지표` : ''}
+        ${(d.sources || []).length ? '<br>출처: ' + d.sources.map(s => s.url ? `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.name)}</a>` : esc(s.name)).join(', ') : ''}
+        <br>요약 문장은 AI가 수치만 보고 작성합니다. 투자 권유가 아닌 정보 정리용 화면입니다.</p>`;
+  }
+
+  async function load(id){
+    if (!cache[id]){
+      const r = await fetch(`data/briefs/${id}.json`, {cache: 'no-cache'});
+      if (!r.ok) throw new Error(r.status);
+      cache[id] = await r.json();
+    }
+    render(cache[id]);
+  }
+
+  async function start(){
+    try {
+      const r = await fetch('data/index.json', {cache: 'no-cache'});
+      const ids = r.ok ? await r.json() : [];
+      if (!ids.length){
+        app.innerHTML = `<div class="state"><strong>아직 수집된 브리프가 없습니다</strong>Actions 탭에서 워크플로를 한 번 수동 실행하면 채워집니다.</div>`;
+        return;
+      }
+      picker.innerHTML = ids.map(id => `<option value="${esc(id)}">${esc(id)}</option>`).join('');
+      picker.hidden = ids.length < 2;
+      picker.addEventListener('change', () => load(picker.value).catch(fail));
+      await load(ids[0]);
+    } catch (e) { fail(); }
+  }
+  function fail(){ app.innerHTML = `<div class="state"><strong>브리프를 불러오지 못했습니다</strong>잠시 후 새로고침해 주세요.</div>`; }
+  start();
+})();
+</script>
+</body>
+</html>
