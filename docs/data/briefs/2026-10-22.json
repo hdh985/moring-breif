@@ -1,0 +1,415 @@
+{
+ "date": "2026-10-22",
+ "label": "10월 22일 (목) 아침",
+ "basis": "기준: 한국 10/20 종가 · 미국 10/21 종가 · 10/22 08:58 자동 수집",
+ "headline": "오늘의 지표",
+ "summary": [],
+ "keys": [
+  {
+   "name": "코스피",
+   "value": "5,552.74",
+   "change": "215.27 (3.73%)",
+   "bar": -3.732
+  },
+  {
+   "name": "S&P 500",
+   "value": "7,757.17",
+   "change": "44.60 (0.58%)",
+   "bar": 0.578
+  },
+  {
+   "name": "원/달러",
+   "value": "1,326.2",
+   "change": "2.3 (0.17%)",
+   "bar": 0.171
+  },
+  {
+   "name": "미 10년물",
+   "value": "5.130%",
+   "change": "1bp",
+   "bar": 1.0
+  },
+  {
+   "name": "WTI",
+   "value": "97.96",
+   "change": "3.83 (3.76%)",
+   "bar": -3.763
+  },
+  {
+   "name": "금",
+   "value": "4,142.0",
+   "change": "0.6 (0.01%)",
+   "bar": -0.014
+  }
+ ],
+ "sections": [
+  {
+   "title": "주식",
+   "hint": "국내 · 미국 · 아시아 · 유럽",
+   "items": [
+    {
+     "name": "코스피",
+     "value": "5,552.74",
+     "change": "215.27 (3.73%)",
+     "bar": -3.732,
+     "date": "2026-10-20"
+    },
+    {
+     "name": "코스닥",
+     "value": "781.97",
+     "change": "26.92 (3.33%)",
+     "bar": -3.328,
+     "date": "2026-10-20"
+    },
+    {
+     "name": "S&P 500",
+     "value": "7,757.17",
+     "change": "44.60 (0.58%)",
+     "bar": 0.578,
+     "date": "2026-10-21"
+    },
+    {
+     "name": "나스닥 종합",
+     "value": "26,702.86",
+     "change": "278.04 (1.05%)",
+     "bar": 1.052,
+     "date": "2026-10-21"
+    },
+    {
+     "name": "다우존스",
+     "value": "52,856.09",
+     "change": "360.21 (0.69%)",
+     "bar": 0.686,
+     "date": "2026-10-21"
+    },
+    {
+     "name": "러셀 2000",
+     "value": "2,781.02",
+     "change": "7.60 (0.27%)",
+     "bar": 0.274,
+     "date": "2026-10-21"
+    },
+    {
+     "name": "필라델피아 반도체",
+     "value": "11,505.56",
+     "change": "221.75 (1.97%)",
+     "bar": 1.965,
+     "date": "2026-10-21",
+     "sub": "SOX"
+    },
+    {
+     "name": "닛케이 225",
+     "value": "64,075.42",
+     "change": "841.28 (1.30%)",
+     "bar": -1.296,
+     "date": "2026-10-20"
+    },
+    {
+     "name": "상해종합",
+     "value": "3,735.37",
+     "change": "4.45 (0.12%)",
+     "bar": 0.119,
+     "date": "2026-10-20"
+    },
+    {
+     "name": "항셍",
+     "value": "23,867.74",
+     "change": "319.09 (1.32%)",
+     "bar": -1.319,
+     "date": "2026-10-20"
+    },
+    {
+     "name": "유로스톡스 50",
+     "value": "6,121.66",
+     "change": "23.15 (0.38%)",
+     "bar": -0.377,
+     "date": "2026-10-20"
+    }
+   ]
+  },
+  {
+   "title": "금리",
+   "hint": "변동폭은 bp(0.01%p)",
+   "items": [
+    {
+     "name": "미 2년물",
+     "value": "4.810%",
+     "change": "2bp",
+     "bar": 2.0,
+     "date": "2026-10-21"
+    },
+    {
+     "name": "미 10년물",
+     "value": "5.130%",
+     "change": "1bp",
+     "bar": 1.0,
+     "date": "2026-10-21"
+    },
+    {
+     "name": "미 30년물",
+     "value": "5.420%",
+     "change": "0bp",
+     "bar": 0.0,
+     "date": "2026-10-21"
+    },
+    {
+     "name": "미 2-10년 스프레드",
+     "value": "32.0bp",
+     "change": null,
+     "bar": null,
+     "date": "2026-10-21"
+    },
+    {
+     "name": "국고채 3년",
+     "value": null,
+     "change": null,
+     "bar": null,
+     "date": null
+    },
+    {
+     "name": "국고채 10년",
+     "value": null,
+     "change": null,
+     "bar": null,
+     "date": null
+    }
+   ]
+  },
+  {
+   "title": "외환",
+   "hint": null,
+   "items": [
+    {
+     "name": "원/달러",
+     "value": "1,326.2",
+     "change": "2.3 (0.17%)",
+     "bar": 0.171,
+     "date": "2026-10-22"
+    },
+    {
+     "name": "달러인덱스",
+     "value": "101.68",
+     "change": "0.05 (0.05%)",
+     "bar": -0.051,
+     "date": "2026-10-21",
+     "sub": "DXY"
+    },
+    {
+     "name": "달러/엔",
+     "value": "158.13",
+     "change": "0.14 (0.09%)",
+     "bar": -0.086,
+     "date": "2026-10-22"
+    },
+    {
+     "name": "유로/달러",
+     "value": "1.1237",
+     "change": "0.0010 (0.09%)",
+     "bar": 0.093,
+     "date": "2026-10-22"
+    },
+    {
+     "name": "달러/위안",
+     "value": "6.6753",
+     "change": "0.0026 (0.04%)",
+     "bar": -0.039,
+     "date": "2026-10-22"
+    }
+   ]
+  },
+  {
+   "title": "원자재",
+   "hint": "에너지 · 귀금속 · 산업금속 · 농산물 (근월물 선물)",
+   "items": [
+    {
+     "name": "WTI",
+     "value": "97.96",
+     "change": "3.83 (3.76%)",
+     "bar": -3.763,
+     "date": "2026-10-21",
+     "sub": "$/배럴"
+    },
+    {
+     "name": "브렌트",
+     "value": "110.01",
+     "change": "1.22 (1.12%)",
+     "bar": 1.121,
+     "date": "2026-10-21",
+     "sub": "$/배럴"
+    },
+    {
+     "name": "천연가스",
+     "value": "2.774",
+     "change": "0.189 (6.38%)",
+     "bar": -6.379,
+     "date": "2026-10-21",
+     "sub": "$/MMBtu"
+    },
+    {
+     "name": "금",
+     "value": "4,142.0",
+     "change": "0.6 (0.01%)",
+     "bar": -0.014,
+     "date": "2026-10-21",
+     "sub": "$/온스"
+    },
+    {
+     "name": "은",
+     "value": "57.67",
+     "change": "0.04 (0.07%)",
+     "bar": -0.071,
+     "date": "2026-10-21",
+     "sub": "$/온스"
+    },
+    {
+     "name": "구리",
+     "value": "6.547",
+     "change": "0.020 (0.30%)",
+     "bar": -0.305,
+     "date": "2026-10-21",
+     "sub": "$/파운드"
+    },
+    {
+     "name": "옥수수",
+     "value": "464.25",
+     "change": "2.25 (0.49%)",
+     "bar": 0.487,
+     "date": "2026-10-21",
+     "sub": "¢/부셸"
+    },
+    {
+     "name": "밀",
+     "value": "628.25",
+     "change": "15.00 (2.33%)",
+     "bar": -2.332,
+     "date": "2026-10-21",
+     "sub": "¢/부셸"
+    },
+    {
+     "name": "대두",
+     "value": "1,246.25",
+     "change": "2.00 (0.16%)",
+     "bar": -0.16,
+     "date": "2026-10-21",
+     "sub": "¢/부셸"
+    }
+   ]
+  },
+  {
+   "title": "미국 매크로 지표",
+   "hint": "최근 발표치 · 직전치",
+   "items": [
+    {
+     "name": "미 CPI",
+     "sub": "전년비",
+     "value": null,
+     "change": null,
+     "bar": null,
+     "date": null
+    },
+    {
+     "name": "미 근원 CPI",
+     "sub": "전년비",
+     "value": null,
+     "change": null,
+     "bar": null,
+     "date": null
+    },
+    {
+     "name": "미 실업률",
+     "sub": null,
+     "value": null,
+     "change": null,
+     "bar": null,
+     "date": null
+    },
+    {
+     "name": "미 비농업 고용",
+     "sub": "전월비, 천 명",
+     "value": null,
+     "change": null,
+     "bar": null,
+     "date": null
+    },
+    {
+     "name": "미 PCE 물가",
+     "sub": "전년비",
+     "value": null,
+     "change": null,
+     "bar": null,
+     "date": null
+    },
+    {
+     "name": "연방기금금리 상단",
+     "sub": null,
+     "value": null,
+     "change": null,
+     "bar": null,
+     "date": null
+    }
+   ]
+  },
+  {
+   "title": "변동성 · 가상자산",
+   "items": [
+    {
+     "name": "VIX",
+     "value": "16.68",
+     "change": "0.63 (3.64%)",
+     "bar": -3.64,
+     "date": "2026-10-21"
+    },
+    {
+     "name": "비트코인",
+     "sub": "달러, 24시간 변동",
+     "value": "84,077",
+     "change": "1.33%",
+     "bar": 1.332,
+     "date": "2026-10-22"
+    },
+    {
+     "name": "이더리움",
+     "sub": "달러, 24시간 변동",
+     "value": "2,471",
+     "change": "0.93%",
+     "bar": 0.935,
+     "date": "2026-10-22"
+    }
+   ]
+  }
+ ],
+ "events": {
+  "past": [],
+  "upcoming": []
+ },
+ "sources": [
+  {
+   "name": "Yahoo Finance(yfinance)",
+   "url": "https://finance.yahoo.com"
+  },
+  {
+   "name": "Stooq",
+   "url": "https://stooq.com"
+  },
+  {
+   "name": "미 재무부",
+   "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates"
+  },
+  {
+   "name": "한국은행 ECOS",
+   "url": "https://ecos.bok.or.kr"
+  },
+  {
+   "name": "FRED",
+   "url": "https://fred.stlouisfed.org"
+  },
+  {
+   "name": "CoinGecko",
+   "url": "https://www.coingecko.com"
+  }
+ ],
+ "stats": {
+  "filled": 32,
+  "total": 40
+ }
+}
